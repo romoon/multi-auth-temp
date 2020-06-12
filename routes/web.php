@@ -11,13 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 // User 認証不要
 Route::get('/', function () { return redirect('/home'); });

@@ -17,5 +17,12 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login'); // route('login')
         }
+        if (Auth::guard("user")->check()) {
+            return redirect()->guest(url('/login'));
+        } elseif (Auth::guard("admin")->check()) {
+            return redirect()->guest(url('/admin/login'));
+        } else {
+            return redirect()->guest(url('/index'));
+        }
     }
 }
